@@ -10,8 +10,6 @@ namespace MvcMusicStore.Models
 
         public Artist Artist { get; set; }
 
-        public int ReviewID { get; set; }
-
         public virtual List<Review> Review { get; set; }
     }
 }
