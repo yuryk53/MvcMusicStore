@@ -14,13 +14,22 @@ namespace MvcMusicStore.Controllers
     {
         private MvcMusicStoreContext db = new MvcMusicStoreContext();
 
+        public ActionResult DisplayByArtist(int artistID)
+        {
+
+            return View();
+        }
+
+
         // GET: Albums
+        //[Route("Albums/All")]
         public ActionResult Index()
         {
             return View(db.Albums.ToList());
         }
 
         // GET: Albums/Details/5
+        [Route("Album/{id:int}")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +45,8 @@ namespace MvcMusicStore.Controllers
         }
 
         // GET: Albums/Create
+        //Displays form to the user
+        //[Authorize()]
         public ActionResult Create()
         {
             return View();
@@ -44,6 +55,7 @@ namespace MvcMusicStore.Controllers
         // POST: Albums/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //Gets user input
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "AlbumID,Title")] Album album)
